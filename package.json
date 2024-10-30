@@ -1,0 +1,22 @@
+{
+  "name": "paycast-sdk",
+  "version": "0.0.1",
+  "description": "A SDK for Paycast services.",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "frames.js": "^0.19.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5"
+  }
+}
