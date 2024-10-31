@@ -1,6 +1,6 @@
 import { getFrame } from "frames.js";
 
-async function submitPaybotTransaction(frameLink: string) {
+export async function submitPaybotTransaction(frameLink: string) {
   const response = await fetch(frameLink, {
     method: "GET",
   });
@@ -14,6 +14,21 @@ async function submitPaybotTransaction(frameLink: string) {
     htmlString: html,
     url: "",
   });
+
+  if (frame["status"] != "success") {
+    throw new Error(`Frame link did not return a valid frame: ${html}`);
+  }
+
+  const callback_url = frame["frame"]["postUrl"];
+  let tx_url;
+
+  for (const button of frame['frame']["buttons"]!) {
+    if (button["action"] == "tx") {
+      tx_url = button["target"];
+    }
+  }
+
+  return frame["frame"];
 }
 
-module.exports = submitPaybotTransaction;
+// module.exports = submitPaybotTransaction;
