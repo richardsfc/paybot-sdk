@@ -9,7 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "frames.js": "^0.19.4"
+    "frames.js": "^0.19.4",
+    "@neynar/nodejs-sdk": "^1.68.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",

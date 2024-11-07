@@ -1,14 +1,21 @@
 /**
  * @jest-environment node
  */
-import { submitPaybotTransaction } from "../src/index";
+import {
+  submitPaybotTransaction,
+  AuthInfo,
+  TransactionInput,
+} from "../src/index";
 
 describe("test paybot transactions", () => {
   test("basic", async () => {
-    expect(
-      await submitPaybotTransaction(
-        "https://app.paycaster.co/api/frames/2166a765-7c8d-4b1b-afb3-3ad237044033",
-      ),
-    ).toBe("1.23");
+    jest.setTimeout(100000);
+    const auth = new AuthInfo("XXXX", "XXXX", "0xXXXX");
+    const input = new TransactionInput(
+      "0x3cb81a320ab9ca5824c2118d5cd48b7425fe7997",
+      "https://app.paycaster.co/api/frames/multi/b9fc47d8-0be0-41d2-81ec-d4aa2c154561",
+      auth,
+    );
+    expect(await submitPaybotTransaction(input)).toBe("hello world"); // this is expected to fail
   });
 });
